@@ -1,0 +1,10 @@
+{
+    "breadcrumbs.enabled": false,
+    "explorer.openEditors.visible": 0,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "workbench.activityBar.visible": false,
+    "workbench.tree.indent": 20
+}
