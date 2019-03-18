@@ -1,3 +1,5 @@
+import { RootComponent } from "./components/root.component";
+
 
 async function fetchPostList() {
     const response = await fetch('http://localhost:3000/posts');
@@ -9,6 +11,10 @@ async function bootstrap() {
     let posts = await fetchPostList();
 
     console.log(posts);
+
+    const $page = document.querySelector('#page');
+    const c = new RootComponent();
+    c.render($page);
 }
 
 bootstrap()
