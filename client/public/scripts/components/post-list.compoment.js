@@ -11,13 +11,22 @@ export class PostListComponent extends Component {
     async render($holder) {
         super.render($holder);
 
-        const posts = await fetchPostList();
+        try
+        {
+            const posts = await fetchPostList();
 
-        posts.forEach(post => {
-            const postComponent = new PostComponent();
-            postComponent.post = post;
-            postComponent.render(this.$element);
-        });
+            posts.forEach(post => {
+                const postComponent = new PostComponent();
+                postComponent.post = post;
+                postComponent.render(this.$element);
+            });
+        }
+        catch(error)
+        {
+            const message = document.createTextNode("Błąd")
+
+            this.$element.appendChild(message);
+        }
 
     }
 }
