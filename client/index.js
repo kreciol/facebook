@@ -4,6 +4,8 @@ const fetch = require('node-fetch');
 
 const app = express();
 
+require('dotenv').config({ path: './config/client.env' });
+
 app.use(cors());
 app.get('/posts', async (req, res) => {
     const response = await fetch("http://localhost:3001/");
@@ -19,6 +21,6 @@ app.get('/posts/:id',async (req, res) => {
 });
 app.get('*',(req, res) => res.end('error'));
 
-app.listen(3000, () => {
-    console.log(`Server was started on http://localhost:3000`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server was started on http://localhost:${process.env.PORT}`);
 });

@@ -2,6 +2,8 @@ const express = require("express");
 const chokidar = require('chokidar');
 const fs = require("fs");
 
+require('dotenv').config({ path: './config/posts.env' });
+
 chokidar
     .watch('./fakes/posts.json')
     .on('all', (event, path) => {
@@ -30,6 +32,6 @@ app.get('/:id',(req, res) => {
 });
 app.get('*',(req, res) => res.status(404));
 
-app.listen(3001, () => {
-    console.log(`Server was started on http://localhost:3001`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server was started on http://localhost:${process.env.PORT}`);
 });
