@@ -4,18 +4,19 @@ import { fetchPostList } from "../services/posts.service";
 
 
 export class PostListComponent extends Component {
-    template = `
-        <div class="post-list"></div>
-    `
+    template = function () {
+        return `<div class="post-list"></div>`;
+    }
 
     async render($holder) {
-        const posts = await fetchPostList();
+        super.render($holder);
 
-        const $element = super.render($holder);
+        const posts = await fetchPostList();
 
         posts.forEach(post => {
             const postComponent = new PostComponent();
-            postComponent.render($element);
+            postComponent.post = post;
+            postComponent.render(this.$element);
         });
 
     }

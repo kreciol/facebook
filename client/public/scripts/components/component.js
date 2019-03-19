@@ -1,17 +1,16 @@
 export class Component {
-    template = '';
+    data = null;
+    template = function() { return ''; };
 
     compile(html) {
         const document = new DOMParser()
             .parseFromString(html, "text/html");
 
-        return document.body.firstElementChild;
+        this.$element = document.body.firstElementChild;
     }
 
     render($holder) {
-        const $element = this.compile(this.template);
-        $holder.appendChild($element);
-
-        return $element;
+        this.compile(this.template());
+        $holder.appendChild(this.$element);
     }
 }
