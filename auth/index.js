@@ -13,12 +13,8 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.post('/',(req, res) => {
-    const user = users.find(u => u.login === req.body.login && u.password === req.body.password)
 
-    res.json({ status: !!user });
-});
-app.get('*',(req, res) => res.status(404));
+require("./web/routing/router")(app);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server was started on http://localhost:${process.env.PORT}`);
